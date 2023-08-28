@@ -3,6 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	node := newNode(3)
+	node := newSinglyLinkedNode(3)
 	fmt.Println(node.Value)
 }
