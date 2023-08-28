@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"golang.org/x/exp/constraints"
+)
 
 func createListOfStrings() []string {
 	return []string{"d", "k", "a", "j", "b"}
@@ -13,40 +17,34 @@ func createListOfIntegers() []int {
 func testInsertionSort() {
 	fmt.Println("Testing Insertion Sort")
 	listOfStrings := createListOfStrings()
-	insertionSort(&listOfStrings)
-	fmt.Println(listOfStrings)
-
-	fmt.Println("======================")
-
 	listOfInts := createListOfIntegers()
-	insertionSort(&listOfInts)
-	fmt.Println(listOfInts)
+	testSort(listOfStrings, insertionSort)
+	testSort(listOfInts, insertionSort)
 }
 
 func testSelectionSort() {
 	fmt.Println("Testing Selection Sort")
 	listOfStrings := createListOfStrings()
-	selectionSort(&listOfStrings)
-	fmt.Println(listOfStrings)
-
-	fmt.Println("======================")
-
 	listOfInts := createListOfIntegers()
-	selectionSort(&listOfInts)
-	fmt.Println(listOfInts)
+	testSort(listOfStrings, selectionSort)
+	testSort(listOfInts, selectionSort)
 }
 
 func testQuickSort() {
 	fmt.Println("Testing Quick Sort")
 	listOfStrings := createListOfStrings()
-	quickSort(&listOfStrings)
-	fmt.Println(listOfStrings)
-
-	fmt.Println("======================")
-
 	listOfInts := createListOfIntegers()
-	quickSort(&listOfInts)
-	fmt.Println(listOfInts)
+	testSort(listOfStrings, quickSort)
+	testSort(listOfInts, quickSort)
+}
+
+func testSort[T constraints.Ordered](
+	list []T,
+	fn func(*[]T),
+) {
+	fn(&list)
+	fmt.Println(list)
+	fmt.Println("======================")
 }
 
 func main() {
