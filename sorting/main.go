@@ -36,8 +36,23 @@ func testSelectionSort() {
 	fmt.Println(listOfInts)
 }
 
+func testQuickSort() {
+	fmt.Println("Testing Quick Sort")
+	listOfStrings := createListOfStrings()
+	quickSort(&listOfStrings)
+	fmt.Println(listOfStrings)
+
+	fmt.Println("======================")
+
+	listOfInts := createListOfIntegers()
+	quickSort(&listOfInts)
+	fmt.Println(listOfInts)
+}
+
 func main() {
 	testInsertionSort()
 	fmt.Println()
 	testSelectionSort()
+	fmt.Println()
+	testQuickSort()
 }
