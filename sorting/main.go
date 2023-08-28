@@ -20,6 +20,7 @@ func testInsertionSort() {
 	listOfInts := createListOfIntegers()
 	testSort(listOfStrings, insertionSort)
 	testSort(listOfInts, insertionSort)
+	fmt.Println()
 }
 
 func testSelectionSort() {
@@ -28,6 +29,7 @@ func testSelectionSort() {
 	listOfInts := createListOfIntegers()
 	testSort(listOfStrings, selectionSort)
 	testSort(listOfInts, selectionSort)
+	fmt.Println()
 }
 
 func testQuickSort() {
@@ -36,6 +38,16 @@ func testQuickSort() {
 	listOfInts := createListOfIntegers()
 	testSort(listOfStrings, quickSort)
 	testSort(listOfInts, quickSort)
+	fmt.Println()
+}
+
+func testBubbleSort() {
+	fmt.Println("Testing Bubble Sort")
+	listOfStrings := createListOfStrings()
+	listOfInts := createListOfIntegers()
+	testSort(listOfStrings, bubbleSort)
+	testSort(listOfInts, bubbleSort)
+	fmt.Println()
 }
 
 func testSort[T constraints.Ordered](
@@ -44,13 +56,11 @@ func testSort[T constraints.Ordered](
 ) {
 	fn(&list)
 	fmt.Println(list)
-	fmt.Println("======================")
 }
 
 func main() {
 	testInsertionSort()
-	fmt.Println()
 	testSelectionSort()
-	fmt.Println()
 	testQuickSort()
+	testBubbleSort()
 }
