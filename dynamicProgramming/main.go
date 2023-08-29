@@ -9,6 +9,8 @@ func testFib(msg string, n int, fn func(int) int) {
 }
 
 func main() {
-	testFib("Normal Fibonacci", 40, fibonacci)
-	testFib("Memoized Fibonacci", 40, memFibonacci)
+	testFib("Normal Fibonacci", 50, fibonacci)
+	testFib("Bottom up Fibonacci", 50, btmUpFibonacci)
+	testFib("Memoized Fibonacci", 50, memFibonacci)
+	testFib("Bottom up memoized Fibonacci", 50, btmUpMemFibonacci)
 }
