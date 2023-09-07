@@ -59,6 +59,18 @@ func testHeapSort() {
 	fmt.Println()
 }
 
+func testMergeSort() {
+	fmt.Println("Testing Merge Sort")
+	listOfStrings := createListOfStrings()
+	listOfInts := createListOfIntegers()
+
+	sortedStrings := mergeSort(listOfStrings)
+	fmt.Println(sortedStrings)
+	sortedInts := mergeSort(listOfInts)
+	fmt.Println(sortedInts)
+	fmt.Println()
+}
+
 func testSort[T constraints.Ordered](
 	list []T,
 	fn func(*[]T),
@@ -73,4 +85,5 @@ func main() {
 	testQuickSort()
 	testBubbleSort()
 	testHeapSort()
+	testMergeSort()
 }
