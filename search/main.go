@@ -64,4 +64,11 @@ func main() {
 	testSearch(420, intList, recBinarySearch)
 	testSearch(666, intList, recBinarySearch)
 	testSearch(13, intList, recBinarySearch)
+
+	sortedIntList := createListOfIntegers()
+	sort.Ints(sortedIntList)
+
+	bsInsert(&sortedIntList, 33)
+
+	fmt.Println(sortedIntList)
 }

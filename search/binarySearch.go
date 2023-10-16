@@ -47,3 +47,42 @@ func _recBinarySearch[T constraints.Ordered](
 	}
 	return false
 }
+
+func bsInsert[T constraints.Ordered](list *[]T, target T) {
+	idx := bsContains(list, target)
+
+	if idx < 0 {
+		list = insert(list, -(idx + 1), target)
+	}
+}
+
+func bsContains[T constraints.Ordered](list *[]T, target T) int {
+	low := 0
+	high := len(*list) - 1
+
+	for low <= high {
+		mid := (low + high) / 2
+
+		if target < (*list)[mid] {
+			high = mid - 1
+		} else if target > (*list)[mid] {
+			low = mid + 1
+		} else {
+			return mid
+		}
+	}
+
+	return -(low + 1)
+}
+
+func insert[T constraints.Ordered](a *[]T, index int, value T) *[]T {
+	if len(*a) == index {
+		*a = append(*a, value)
+		return a
+	}
+
+	*a = append((*a)[:index+1], (*a)[index:]...)
+	(*a)[index] = value
+
+	return a
+}
