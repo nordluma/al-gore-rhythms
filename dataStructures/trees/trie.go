@@ -1,10 +1,15 @@
 package trees
 
-const u8 = 255
-
 type TrieNode struct {
 	AtEnd    bool
-	Children [u8]*TrieNode
+	Children map[byte]*TrieNode
+}
+
+func newTrieNode() *TrieNode {
+	return &TrieNode{
+		Children: make(map[byte]*TrieNode),
+		AtEnd:    false,
+	}
 }
 
 type Trie struct {
@@ -13,7 +18,7 @@ type Trie struct {
 }
 
 func NewTrie() *Trie {
-	return &Trie{root: &TrieNode{}, len: 0}
+	return &Trie{root: newTrieNode(), len: 0}
 }
 
 func (t *Trie) Insert(text string) {
@@ -22,7 +27,7 @@ func (t *Trie) Insert(text string) {
 	for i := 0; i < len(text); i++ {
 		charIdx := text[i] - 'a'
 		if currentNode.Children[charIdx] == nil {
-			currentNode.Children[charIdx] = &TrieNode{}
+			currentNode.Children[charIdx] = newTrieNode()
 		}
 
 		currentNode = currentNode.Children[charIdx]
