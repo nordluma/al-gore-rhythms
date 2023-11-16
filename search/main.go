@@ -71,6 +71,42 @@ func testBinarySearch() {
 	fmt.Println(sortedIntList)
 }
 
+
+func testBSTSearch() {
+	stringList := createListOfStrings()
+	bst := NewBinaryTree[string]()
+	for i := 0; i < len(stringList); i++ {
+		bst.Insert(stringList[i])
+	}
+
+	target := "mom"
+	res := bst.Contains(target)
+	fmt.Printf("Tree contains: %s => %v\n", target, res)
+	fmt.Printf(
+		"Tree contains: %s => %v\n",
+		"Skill issue",
+		bst.Contains("Skill issue"),
+	)
+
+	intList := createListOfIntegers()
+	bstNum := NewBinaryTree[int]()
+	for i := 0; i < len(intList); i++ {
+		bstNum.Insert(intList[i])
+	}
+
+	targetNum := 420
+	fmt.Printf(
+		"Tree contains: %d => %v\n",
+		targetNum,
+		bstNum.Contains(targetNum),
+	)
+	fmt.Printf(
+		"Tree contains: %d => %v\n",
+		54,
+		bstNum.Contains(54),
+	)
+}
+
 func main() {
 	// Testing linearSearch
 	testLinearSearch()
@@ -78,4 +114,6 @@ func main() {
 	fmt.Println()
 	testBinarySearch()
 
+	fmt.Println()
+	testBSTSearch()
 }
