@@ -29,18 +29,15 @@ func testSearch[T constraints.Ordered](
 	fmt.Println("===================")
 }
 
-func main() {
-	// Testing linearSearch
+func testLinearSearch() {
 	fmt.Println("Testing linear search")
 	testSearch("doing", createListOfStrings(), linearSearch)
 	testSearch("world", createListOfStrings(), linearSearch)
 	testSearch(69, createListOfIntegers(), linearSearch)
 	testSearch(7, createListOfIntegers(), linearSearch)
+}
 
-	fmt.Println()
-
-	// Testing binarySearch
-
+func testBinarySearch() {
 	stringList := createListOfStrings()
 	sort.Strings(stringList)
 
@@ -65,10 +62,20 @@ func main() {
 	testSearch(666, intList, recBinarySearch)
 	testSearch(13, intList, recBinarySearch)
 
+	fmt.Println()
+
+	fmt.Println("Testing search or insert binary search")
 	sortedIntList := createListOfIntegers()
 	sort.Ints(sortedIntList)
-
 	bsInsert(&sortedIntList, 33)
-
 	fmt.Println(sortedIntList)
+}
+
+func main() {
+	// Testing linearSearch
+	testLinearSearch()
+
+	fmt.Println()
+	testBinarySearch()
+
 }
