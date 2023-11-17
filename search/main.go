@@ -73,6 +73,7 @@ func testBinarySearch() {
 
 
 func testBSTSearch() {
+	fmt.Println("Testing BST search")
 	stringList := createListOfStrings()
 	bst := NewBinaryTree[string]()
 	for i := 0; i < len(stringList); i++ {
