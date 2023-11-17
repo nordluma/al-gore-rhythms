@@ -108,6 +108,31 @@ func testBSTSearch() {
 	)
 }
 
+func testAVLSearch() {
+	fmt.Println("Testing AVL search")
+	stringList := createListOfStrings()
+	avl := NewAVLTree[string]()
+	for i := 0; i < len(stringList); i++ {
+		avl.Insert(stringList[i])
+	}
+
+	fmt.Printf("AVL tree contains: %s => %v\n", "mom", avl.Contains("mom"))
+	fmt.Printf(
+		"AVL tree contains: %s => %v\n",
+		"Skill issue",
+		avl.Contains("Skill issue"),
+	)
+
+	numList := createListOfIntegers()
+	avlNum := NewAVLTree[int]()
+	for i := 0; i < len(numList); i++ {
+		avlNum.Insert(numList[i])
+	}
+
+	fmt.Printf("AVL tree contains: %d => %v\n", 420, avlNum.Contains(420))
+	fmt.Printf("AVL tree contains: %d => %v\n", 54, avlNum.Contains(54))
+}
+
 func main() {
 	// Testing linearSearch
 	testLinearSearch()
@@ -117,4 +142,7 @@ func main() {
 
 	fmt.Println()
 	testBSTSearch()
+
+	fmt.Println()
+	testAVLSearch()
 }
